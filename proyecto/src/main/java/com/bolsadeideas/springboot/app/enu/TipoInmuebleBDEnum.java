@@ -5,7 +5,4 @@ public enum TipoInmuebleBDEnum {
 	APARTAMENTO,
 	CASA,
 	lOCAL;
-
-	
-
 }
