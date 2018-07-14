@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+
 import com.bolsadeideas.springboot.app.models.entity.Inmueble;
 import com.bolsadeideas.springboot.app.models.service.IInmuebleService;
 
@@ -21,8 +22,9 @@ import com.bolsadeideas.springboot.app.models.service.IInmuebleService;
 public class InmuebleController {
 
 	@Autowired
+
 	private IInmuebleService inmuebleService;
-	
+
 	@RequestMapping(value = "/listarInmuebles", method = RequestMethod.GET)
 	public String listar(Model model) {
 		model.addAttribute("titulo", "Listado de inmuebles");
@@ -33,18 +35,18 @@ public class InmuebleController {
 	@RequestMapping(value = "/formInmueble")
 	public String crear(Map<String, Object> model) {
 
-		Inmueble  inmueble = new Inmueble();
+		Inmueble inmueble = new Inmueble();
 		model.put("inmueble", inmueble);
 		model.put("titulo", "Formulario de Inmuebles");
 		return "form";
 	}
-	
-	@RequestMapping(value="/form/{id}")
-	public String editar(@PathVariable(value="id") Long id, Map<String, Object> model) {
-		
+
+	@RequestMapping(value = "/form/{id}")
+	public String editar(@PathVariable(value = "id") Long id, Map<String, Object> model) {
+
 		Inmueble inmueble = null;
-		
-		if(id > 0) {
+
+		if (id > 0) {
 			inmueble = inmuebleService.findOne(id);
 		} else {
 			return "redirect:/listar";
@@ -66,14 +68,14 @@ public class InmuebleController {
 		status.setComplete();
 		return "redirect:listar";
 	}
-	
-	@RequestMapping(value="/eliminar/{id}")
-	public String eliminar(@PathVariable(value="id") Long id) {
-		
-		if(id > 0) {
+
+	@RequestMapping(value = "/eliminar/{id}")
+	public String eliminar(@PathVariable(value = "id") Long id) {
+
+		if (id > 0) {
 			inmuebleService.delete(id);
 		}
 		return "redirect:/listar";
 	}
-	
+
 }
