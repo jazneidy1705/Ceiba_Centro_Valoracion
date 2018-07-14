@@ -10,11 +10,11 @@ import com.bolsadeideas.springboot.app.models.dao.IClienteDao;
 import com.bolsadeideas.springboot.app.models.entity.Cliente;
 
 @Service
-public class ClienteServiceImpl implements IClienteService{
+public class ClienteServiceImpl implements IClienteService {
 
 	@Autowired
 	private IClienteDao clienteDao;
-	
+
 	@Override
 	@Transactional(readOnly = true)
 	public List<Cliente> findAll() {
@@ -26,7 +26,7 @@ public class ClienteServiceImpl implements IClienteService{
 	@Transactional
 	public void save(Cliente cliente) {
 		clienteDao.save(cliente);
-		
+
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public class ClienteServiceImpl implements IClienteService{
 	@Transactional
 	public void delete(Long id) {
 		clienteDao.delete(id);
-		
+
 	}
 
 }
