@@ -13,9 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-
-import com.bolsadeideas.springboot.app.models.dao.IInmuebleDao;
-import com.bolsadeideas.springboot.app.models.entity.Cliente;
 import com.bolsadeideas.springboot.app.models.entity.Inmueble;
 import com.bolsadeideas.springboot.app.models.service.IInmuebleService;
 
@@ -24,7 +21,7 @@ import com.bolsadeideas.springboot.app.models.service.IInmuebleService;
 public class InmuebleController {
 
 	@Autowired
-	IInmuebleService inmuebleService;
+	private IInmuebleService inmuebleService;
 	
 	@RequestMapping(value = "/listarInmuebles", method = RequestMethod.GET)
 	public String listar(Model model) {
@@ -33,7 +30,7 @@ public class InmuebleController {
 		return "listarInmuebles";
 	}
 
-	@RequestMapping(value = "/formInmuebles")
+	@RequestMapping(value = "/formInmueble")
 	public String crear(Map<String, Object> model) {
 
 		Inmueble  inmueble = new Inmueble();
