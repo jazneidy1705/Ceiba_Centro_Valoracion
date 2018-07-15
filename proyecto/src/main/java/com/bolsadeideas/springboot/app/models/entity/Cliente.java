@@ -45,7 +45,7 @@ public class Cliente implements Serializable {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createAt;
 
-	@OneToMany(mappedBy = "inmuebles")
+	@OneToMany(mappedBy = "cliente")
 	private List<Inmueble> inmuebles;
 
 	public List<Inmueble> getInmuebles() {
