@@ -1,6 +1,5 @@
 package com.bolsadeideas.springboot.app.models.entity;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -14,11 +13,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
-
-import javax.persistence.Entity;
-import javax.persistence.Table;
 
 @Entity
 @Table(name = "Seguros")
@@ -30,19 +25,20 @@ public class Seguro {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotNull
+	@Column(name = "fecha")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date Fecha;
+	private Date fecha;
 	
 	@OneToOne
 	private Inmueble inmuble;
+
+	private String estado;
 	
-	@NotEmpty
-	private String Estado;
+	private double prima;
 	
-	private double Prima;
-	
-	private double Valor;
+	private double valor;
 
 	public Long getId() {
 		return id;
@@ -53,38 +49,45 @@ public class Seguro {
 	}
 
 	public Date getFecha() {
-		return Fecha;
+		return fecha;
 	}
 
 	public void setFecha(Date fecha) {
-		Fecha = fecha;
+		this.fecha = fecha;
+	}
+
+	public Inmueble getInmuble() {
+		return inmuble;
+	}
+
+	public void setInmuble(Inmueble inmuble) {
+		this.inmuble = inmuble;
 	}
 
 	public String getEstado() {
-		return Estado;
+		return estado;
 	}
 
 	public void setEstado(String estado) {
-		Estado = estado;
+		this.estado = estado;
 	}
 
 	public double getPrima() {
-		return Prima;
+		return prima;
 	}
 
 	public void setPrima(double prima) {
-		Prima = prima;
+		this.prima = prima;
 	}
 
 	public double getValor() {
-		return Valor;
+		return valor;
 	}
 
 	public void setValor(double valor) {
-		Valor = valor;
+		this.valor = valor;
 	}
-	
-	
-	
 
+	
+	
 }

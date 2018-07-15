@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -48,6 +49,9 @@ public class Inmueble implements Serializable {
 
 	@Enumerated(EnumType.STRING)
 	private TipoInmuebleBDEnum tipoInmueble;
+	
+	@OneToOne(mappedBy="inmuble")
+	private Seguro seguro;
 
 	public TipoInmuebleBDEnum getTipoInmueble() {
 		return tipoInmueble;

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${titulo}">Insert title here</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" />
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">Spring Boot</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
+				<li class="nav-item"><a class="nav-link" href="#about"
+					th:href="@{/listarSeguro}">Seguro</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	  <div class="container">
+		<h1
+			class="text-secondary border border-success border-top-0 border-left-0 border-right-0"
+			th:text="${titulo}"></h1>
+        <p><a th:href="@{/formSeguro}" class="btn btn-success btn-xs">crear seguro</a></p>
+		<table class="table table-striped table-bordered">
+			<thead class="thead-inverse">
+				<tr>
+					<th>id</th>
+					<th>fecha</th>
+					<th>estado</th>
+					<th>prima</th>
+					<th>valor</th>						
+				</tr>
+			</thead>
+			<tbody>
+			
+				<tr th:each="seguro: ${seguros}">
+					<td th:text="${seguro.id}"></td>
+					<td th:text="${seguro.fecha}"></td>
+					<td th:text="${seguro.estado}"></td>	
+					<td th:text="${seguro.prima}"></td>
+					<td th:text="${seguro.valor}"></td>								
+					<td><a class="btn btn-primary btn-xs" th:href="@{/formSeguro/} + ${seguro.id}" th:text="'editar'"></a></td>
+					<td><a class="btn btn-danger btn-xs" th:href="@{/eliminarSeguro/} + ${seguro.id}" th:text="'eliminar'" onclick="return confirm('Estás seguro que quieres eliminar?');"></a></td>
+				</tr>
+				
+			</tbody>
+
+		</table>
+	</div>
+
+</body>
+</html>
