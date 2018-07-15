@@ -24,11 +24,11 @@ public class InmuebleController {
 	@Autowired
 	private IInmuebleService inmuebleService;
 
-	@RequestMapping(value = "/listarInmuebles", method = RequestMethod.GET)
+	@RequestMapping(value = "/listarInmueble", method = RequestMethod.GET)
 	public String listar(Model model) {
 		model.addAttribute("titulo", "Listado de inmuebles");
 		model.addAttribute("inmuebles", inmuebleService.findAll());
-		return "listarInmuebles";
+		return "listarInmueble";
 	}
 
 	@RequestMapping(value = "/formInmueble")
@@ -48,7 +48,7 @@ public class InmuebleController {
 		if (id > 0) {
 			inmueble = inmuebleService.findOne(id);
 		} else {
-			return "redirect:/listarInmuebles";
+			return "redirect:/listarInmueble";
 		}
 		model.put("inmueble", inmueble);
 		model.put("titulo", "Editar Inmueble");
@@ -65,7 +65,7 @@ public class InmuebleController {
 
 		inmuebleService.save(inmueble);
 		status.setComplete();
-		return "redirect:listarInmuebles";
+		return "redirect:listarInmueble";
 	}
 
 	@RequestMapping(value = "/eliminarInmueble/{id}")
@@ -74,7 +74,7 @@ public class InmuebleController {
 		if (id > 0) {
 			inmuebleService.delete(id);
 		}
-		return "redirect:/listarInmuebles";
+		return "redirect:/listarInmueble";
 	}
 
 }

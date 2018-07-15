@@ -18,57 +18,117 @@
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
 				<li class="nav-item"><a class="nav-link" href="#about"
-					th:href="@{/listar}">Inmueble</a></li>
+					th:href="@{/listarInmueble}">Inmueble</a></li>
 			</ul>
 		</div>
 	</nav>
-
+ 
 	<div class="container">
 		<h1 th:text="${titulo}"
 			class="text-secondary border border-success border-top-0 border-left-0 border-right-0"></h1>
-			
+
 		<div th:object="${inmueble}" th:remove="tag">
 			<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger"
 				role="alert">
 				<li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
 			</ul>
 		</div>
-		
-		<form th:action="@{/formInmueble}" th:object="${inmueble}" method="post">
+
+		<form th:action="@{/formInmueble}" th:object="${inmueble}"
+			method="post">
+
+
 			<div class="form-group row">
 				<label for="direccion" class="col-sm-2 col-form-label">Dirección</label>
 				<div class="col-sm-6">
-					<input type="text" th:field="*{direccion}" class="form-control" th:errorclass="'form-control alert-danger'"/>
-					<small class="form-text text-danger" th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}"></small>
+					<input type="text" th:field="*{direccion}" class="form-control"
+						th:errorclass="'form-control alert-danger'" /> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}"></small>
 				</div>
 			</div>
+
 			<div class="form-group row">
 				<label for="metraje" class="col-sm-2 col-form-label">Metraje</label>
 				<div class="col-sm-6">
-					<input type="text" th:field="*{metraje}" class="form-control" th:errorclass="'form-control alert-danger'" />
-					<small class="form-text text-danger" th:if="${#fields.hasErrors('metraje')}" th:errors="*{metraje}"></small>
+					<input type="text" th:field="*{metraje}" class="form-control"
+						th:errorclass="'form-control alert-danger'" /> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('metraje')}" th:errors="*{metraje}"></small>
 				</div>
 			</div>
+
 			<div class="form-group row">
 				<label for="ciudad" class="col-sm-2 col-form-label">Ciudad</label>
 				<div class="col-sm-6">
-					<input type="text" th:field="*{ciudad}" class="form-control" th:errorclass="'form-control alert-danger'" />
-					<small class="form-text text-danger" th:if="${#fields.hasErrors('ciudad')}" th:errors="*{ciudad}"></small>
+					<input type="text" th:field="*{ciudad}" class="form-control"
+						th:errorclass="'form-control alert-danger'" /> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('ciudad')}" th:errors="*{ciudad}"></small>
 				</div>
 			</div>
+
 			<div class="form-group row">
 				<label for="createAt" class="col-sm-2 col-form-label">Pais</label>
 				<div class="col-sm-6">
-					<input type="text" class="form-control" th:field="*{createAt}" th:errorclass="'form-control alert-danger'" />
-					<small class="form-text text-danger" th:if="${#fields.hasErrors('createAt')}" th:errors="*{createAt}"></small>
+					<input type="text" class="form-control" th:field="*{pais}"
+						th:errorclass="'form-control alert-danger'" /> <small
+						class="form-text text-danger" th:if="${#fields.hasErrors('pais')}"
+						th:errors="*{pais}"></small>
 				</div>
 			</div>
+
+<!--  
+			<div class="form-group row">
+				<label for="createAt" class="col-sm-2 col-form-label">Estrato</label>
+				<div class="col-sm-6">
+					<input type="text" class="form-control" th:field="*{estrato}"
+						th:errorclass="'form-control alert-danger'" /> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('estrato')}" th:errors="*{estrato}"></small>
+				</div>
+			</div>
+-->
+			<div class="form-group row">
+				<label for="createAt" class="col-sm-2 col-form-label">Latitud</label>
+				<div class="col-sm-6">
+					<input type="text" class="form-control" th:field="*{latitud}"
+						th:errorclass="'form-control alert-danger'" /> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('latitud')}" th:errors="*{latitud}"></small>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="createAt" class="col-sm-2 col-form-label">Longitud</label>
+				<div class="col-sm-6">
+					<input type="text" class="form-control" th:field="*{longitud}"
+						th:errorclass="'form-control alert-danger'" /> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('longitud')}" th:errors="*{longitud}"></small>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="createAt" class="col-sm-2 col-form-label">Cliente</label>
+				<div class="col-sm-6">
+					<input type="text" class="form-control" th:field="*{cliente.id}"
+						th:errorclass="'form-control alert-danger'" /> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('cliente')}" th:errors="*{cliente}"></small>
+				</div>
+			</div>
+
 			<div class="form-group row">
 				<div class="col-sm-6">
 					<input type="submit" value="Crear Impuesto" class="btn btn-primary" />
 				</div>
 			</div>
+
 		</form>
+
 	</div>
+
+
 </body>
 </html>

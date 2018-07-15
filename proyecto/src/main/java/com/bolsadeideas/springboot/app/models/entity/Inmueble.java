@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -40,10 +42,11 @@ public class Inmueble implements Serializable {
 	@ManyToOne
 	private Cliente cliente;
 
-	@NotEmpty
+//	@NotEmpty
+//	@
 	private double latitud;
 
-	@NotEmpty
+//	@NotEmpty
 	private double longitud;
 
 	@Enumerated(EnumType.STRING)
