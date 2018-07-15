@@ -32,7 +32,7 @@ public class Seguro {
 	private Date fecha;
 	
 	@OneToOne
-	private Inmueble inmuble;
+	private Inmueble inmueble;
 
 	private String estado;
 	
@@ -56,14 +56,7 @@ public class Seguro {
 		this.fecha = fecha;
 	}
 
-	public Inmueble getInmuble() {
-		return inmuble;
-	}
-
-	public void setInmuble(Inmueble inmuble) {
-		this.inmuble = inmuble;
-	}
-
+	
 	public String getEstado() {
 		return estado;
 	}
@@ -87,7 +80,14 @@ public class Seguro {
 	public void setValor(double valor) {
 		this.valor = valor;
 	}
-
 	
+	public Inmueble getInmueble() {
+		return inmueble;
+	}
+
+	public void setInmueble(Inmueble inmueble) {
+		this.inmueble = inmueble;
+	}
+
 	
 }

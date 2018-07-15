@@ -42,7 +42,7 @@
 					<small class="form-text text-danger" th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}"></small>
 				</div>
 			</div>
-			 <!--  
+			   
 			<div class="form-group row">
 				<label for="inmueble" class="col-sm-2 col-form-label">Inmueble</label>
 				<div class="col-sm-6">
@@ -50,7 +50,7 @@
 					<small class="form-text text-danger" th:if="${#fields.hasErrors('inmueble')}" th:errors="*{inmueble}"></small>
 				</div>
 			</div>
-			-->
+			
 			<div class="form-group row">
 				<label for="estado" class="col-sm-2 col-form-label">Estado</label>
 				<div class="col-sm-6">
@@ -59,7 +59,7 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="email" class="col-sm-2 col-form-label">Prima</label>
+				<label for="prima" class="col-sm-2 col-form-label">Prima</label>
 				<div class="col-sm-6">
 					<input type="text" th:field="*{prima}" class="form-control" th:errorclass="'form-control alert-danger'" />
 					<small class="form-text text-danger" th:if="${#fields.hasErrors('prima')}" th:errors="*{prima}"></small>

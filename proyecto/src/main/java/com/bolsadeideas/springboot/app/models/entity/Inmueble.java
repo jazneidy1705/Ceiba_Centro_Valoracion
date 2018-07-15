@@ -19,7 +19,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import com.bolsadeideas.springboot.app.enu.TipoInmuebleBDEnum;
 
 @Entity
-@Table(name = "inmuebles")
+@Table(name = "inmueble")
 public class Inmueble implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -53,8 +53,16 @@ public class Inmueble implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private TipoInmuebleBDEnum tipoInmueble;
 	
-	@OneToOne(mappedBy="inmuble")
+	@OneToOne(mappedBy="inmueble")
 	private Seguro seguro;
+
+	public Seguro getSeguro() {
+		return seguro;
+	}
+
+	public void setSeguro(Seguro seguro) {
+		this.seguro = seguro;
+	}
 
 	public TipoInmuebleBDEnum getTipoInmueble() {
 		return tipoInmueble;
