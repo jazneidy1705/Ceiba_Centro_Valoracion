@@ -3,6 +3,8 @@ package com.bolsadeideas.springboot.app.models.entity;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
+
+import com.bolsadeideas.springboot.app.enu.TipoInmuebleBDEnum;
 
 @Entity
 @Table(name = "inmuebles")
@@ -41,6 +45,17 @@ public class Inmueble implements Serializable {
 
 	@NotEmpty
 	private double longitud;
+
+	@Enumerated(EnumType.STRING)
+	private TipoInmuebleBDEnum tipoInmueble;
+
+	public TipoInmuebleBDEnum getTipoInmueble() {
+		return tipoInmueble;
+	}
+
+	public void setTipoInmueble(TipoInmuebleBDEnum tipoInmueble) {
+		this.tipoInmueble = tipoInmueble;
+	}
 
 	public Long getId() {
 		return id;
