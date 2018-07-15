@@ -39,13 +39,13 @@ public class ClienteController {
 		model.put("titulo", "Formulario de Cliente");
 		return "form";
 	}
-	
-	@RequestMapping(value="/form/{id}")
-	public String editar(@PathVariable(value="id") Long id, Map<String, Object> model) {
-		
+
+	@RequestMapping(value = "/form/{id}")
+	public String editar(@PathVariable(value = "id") Long id, Map<String, Object> model) {
+
 		Cliente cliente = null;
-		
-		if(id > 0) {
+
+		if (id > 0) {
 			cliente = clienteService.findOne(id);
 		} else {
 			return "redirect:/listar";
@@ -67,11 +67,11 @@ public class ClienteController {
 		status.setComplete();
 		return "redirect:listar";
 	}
-	
-	@RequestMapping(value="/eliminar/{id}")
-	public String eliminar(@PathVariable(value="id") Long id) {
-		
-		if(id > 0) {
+
+	@RequestMapping(value = "/eliminar/{id}")
+	public String eliminar(@PathVariable(value = "id") Long id) {
+
+		if (id > 0) {
 			clienteService.delete(id);
 		}
 		return "redirect:/listar";
