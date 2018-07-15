@@ -2,12 +2,14 @@ package com.bolsadeideas.springboot.app.models.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,10 +31,10 @@ public class Cliente implements Serializable {
 
 	@NotEmpty
 	private String nombre;
-	
+
 	@NotEmpty
 	private String apellido;
-	
+
 	@NotEmpty
 	@Email
 	private String email;
@@ -40,9 +42,20 @@ public class Cliente implements Serializable {
 	@NotNull
 	@Column(name = "create_at")
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createAt;
-	
+
+	@OneToMany(mappedBy = "inmuebles")
+	private List<Inmueble> inmuebles;
+
+	public List<Inmueble> getInmuebles() {
+		return inmuebles;
+	}
+
+	public void setInmuebles(List<Inmueble> inmuebles) {
+		this.inmuebles = inmuebles;
+	}
+
 	public Long getId() {
 		return id;
 	}
