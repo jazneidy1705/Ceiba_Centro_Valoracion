@@ -6,7 +6,7 @@ import com.bolsadeideas.springboot.app.models.entity.Cliente;
 
 public interface IClienteDao extends CrudRepository<Cliente, Long> {
 		
-	
+
 	
 
 }
