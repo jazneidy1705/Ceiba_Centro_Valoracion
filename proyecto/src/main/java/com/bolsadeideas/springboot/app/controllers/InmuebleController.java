@@ -22,7 +22,6 @@ import com.bolsadeideas.springboot.app.models.service.IInmuebleService;
 public class InmuebleController {
 
 	@Autowired
-
 	private IInmuebleService inmuebleService;
 
 	@RequestMapping(value = "/listarInmuebles", method = RequestMethod.GET)
@@ -38,10 +37,10 @@ public class InmuebleController {
 		Inmueble inmueble = new Inmueble();
 		model.put("inmueble", inmueble);
 		model.put("titulo", "Formulario de Inmuebles");
-		return "form";
+		return "formInmueble";
 	}
 
-	@RequestMapping(value = "/form/{id}")
+	@RequestMapping(value = "/formInmueble/{id}")
 	public String editar(@PathVariable(value = "id") Long id, Map<String, Object> model) {
 
 		Inmueble inmueble = null;
@@ -49,11 +48,11 @@ public class InmuebleController {
 		if (id > 0) {
 			inmueble = inmuebleService.findOne(id);
 		} else {
-			return "redirect:/listar";
+			return "redirect:/listarInmuebles";
 		}
 		model.put("inmueble", inmueble);
 		model.put("titulo", "Editar Inmueble");
-		return "form";
+		return "formInmueble";
 	}
 
 	@RequestMapping(value = "/formInmueble", method = RequestMethod.POST)
@@ -61,21 +60,21 @@ public class InmuebleController {
 
 		if (result.hasErrors()) {
 			model.addAttribute("titulo", "Formulario de Inmueble");
-			return "form";
+			return "formInmueble";
 		}
 
 		inmuebleService.save(inmueble);
 		status.setComplete();
-		return "redirect:listar";
+		return "redirect:listarInmuebles";
 	}
 
-	@RequestMapping(value = "/eliminar/{id}")
+	@RequestMapping(value = "/eliminarInmueble/{id}")
 	public String eliminar(@PathVariable(value = "id") Long id) {
 
 		if (id > 0) {
 			inmuebleService.delete(id);
 		}
-		return "redirect:/listar";
+		return "redirect:/listarInmuebles";
 	}
 
 }
