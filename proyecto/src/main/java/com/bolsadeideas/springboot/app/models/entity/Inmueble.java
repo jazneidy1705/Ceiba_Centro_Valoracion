@@ -1,5 +1,5 @@
 package com.bolsadeideas.springboot.app.models.entity;
 
-public class Propietario {
+public class Inmueble {
 
 }
